@@ -1,18 +1,20 @@
+{-# LANGUAGE DeriveAnyClass #-}
+{-# LANGUAGE DeriveGeneric #-}
 {-# LANGUAGE JavaScriptFFI #-}
 {-# LANGUAGE OverloadedStrings #-}
-{-# LANGUAGE DeriveGeneric #-}
-{-# LANGUAGE DeriveAnyClass #-}
 
 module Main where
 
-import Data.Maybe (Maybe)
-import GHC.Generics (Generic)
-import GHCJS.Marshal(fromJSVal, toJSVal, ToJSVal, FromJSVal)
-import Data.Typeable (Typeable)
-import GHCJS.Types (JSVal(..), JSString, jsval)
-import GHCJS.Foreign.Callback (asyncCallback)
-import GHCJS.Foreign.Export (withExport)
-import Reflex.Dom (mainWidget, text)
+import Data.Maybe
+  (Maybe)
+import GHC.Generics
+  (Generic)
+import GHCJS.Foreign.Callback
+  (asyncCallback)
+import GHCJS.Marshal
+  (FromJSVal, ToJSVal, fromJSVal, toJSVal)
+import GHCJS.Types
+  (JSVal, jsval)
 
 -- synchronous implementation (using $c)
 foreign import javascript interruptible "setTimeout($c, $1);"
