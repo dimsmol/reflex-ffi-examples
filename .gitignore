@@ -1,0 +1,5 @@
+/dist-*
+/result
+/.ghc*
+**/*.hi
+**/*.o

@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+nix-shell -A shells.ghc --run "hoogle server --local --port=8080" --arg withHoogle true

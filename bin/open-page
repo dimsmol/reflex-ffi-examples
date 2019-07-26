@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+xdg-open file://`pwd`/result/frontend/bin/frontend.jsexe/index.html

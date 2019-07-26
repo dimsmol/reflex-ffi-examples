@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+nix-build -o result/frontend -A ghcjs.frontend
