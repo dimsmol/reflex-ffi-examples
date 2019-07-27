@@ -20,13 +20,13 @@ import GHCJS.Types
 foreign import javascript interruptible "setTimeout($c, $1);"
   delay :: Int -> IO ()
 
--- synchronous implementation (using $c), returns its single argument
+-- synchronous implementation (using $c), returns its second argument
 foreign import javascript interruptible "setTimeout($c, $1, $2);"
-  delayWithOneParam :: Int -> Int -> IO Int
+  delayWithOneCbArg :: Int -> Int -> IO Int
 
--- synchronous implementation (using $c), returns both arguments
+-- synchronous implementation (using $c), returns its second and third arguments
 foreign import javascript interruptible "setTimeout(function (a, b) { $c(a, b); }, $1, $2, $3);"
-  delayWithTwoParams :: Int -> Int -> Int -> IO (Int, Int)
+  delayWithTwoCbArgs :: Int -> Int -> Int -> IO (Int, Int)
 
 -- asynchronous implementation, returns immediately
 -- callback (first argument) will be executed on a separate thread
@@ -57,11 +57,11 @@ main = do
   delay 1000
   print "after delay 1000"
 
-  v1 <- delayWithOneParam 1000 1
-  print $ "after delayWithOneParam 1000 1, result = " <> show v1
+  v1 <- delayWithOneCbArg 1000 1
+  print $ "after delayWithOneCbArg 1000 1, result = " <> show v1
 
-  v2 <- delayWithTwoParams 1000 1 2
-  print $ "after delayWithTwoParams 1000 1 2, result = " <> show v2
+  v2 <- delayWithTwoCbArgs 1000 1 2
+  print $ "after delayWithTwoCbArgs 1000 1 2, result = " <> show v2
 
   -- WARN: real code must call releaseCallback at some point
   cb <- asyncCallback f
