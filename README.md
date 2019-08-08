@@ -16,7 +16,8 @@ NOTE: For more info on `bin/*` commands, see [reflex-template](https://github.co
 
 ## libs to look at
 
-- [ghcjs-base](http://hackage.haskell.org/package/ghcjs-base) - primitives you'll need
+- [ghcjs-base](http://hackage.haskell.org/package/ghcjs-base) - primitives you'll need for GHCJS-specific code (JS FFI, etc.)
+- [jsaddle](http://hackage.haskell.org/package/jsaddle) - primitives that work with both GHCJS and GHC
 - [ghcjs-dom](http://hackage.haskell.org/package/ghcjs-dom) - web browser API, includes these parts:
   - [ghcjs-dom-jsffi](http://hackage.haskell.org/package/ghcjs-dom-jsffi) - JS FFI implementation (for GHCJS)
   - [ghcjs-dom-jsaddle](http://hackage.haskell.org/package/ghcjs-dom-jsaddle) - jsaddle-based implementation (for GHC)
@@ -29,7 +30,7 @@ Usually, you want to have implementation of the needed API with both JS FFI (to 
   - `#ifdef` directives:
     - [GHCJS.DOM.Document](https://github.com/ghcjs/ghcjs-dom/blob/d17a8078b05e7b06dc2ad5553016181c20bd2f83/ghcjs-dom/src/GHCJS/DOM/Document.hs) (WARN: link to specific commit, can be outdated)
     - [jsffi mentions](https://github.com/ghcjs/ghcjs-dom/search?q=ghcjs-dom-jsffi)
-  - condition on `flag(jsffi)` in [cabal](https://github.com/ghcjs/ghcjs-dom/blob/d17a8078b05e7b06dc2ad5553016181c20bd2f83/ghcjs-dom/ghcjs-dom.cabal) to use different packages (WARN: link to specific commit, can be outdated)
+  - conditions on `flag(jsffi)` and `ghcjs` in [cabal](https://github.com/ghcjs/ghcjs-dom/blob/d17a8078b05e7b06dc2ad5553016181c20bd2f83/ghcjs-dom/ghcjs-dom.cabal) to use different packages (WARN: link to specific commit, can be outdated)
 - reflex-dom uses condition on `ghcjs` in [cabal](https://github.com/reflex-frp/reflex-dom/blob/adeee9dda8ab7253481c09414d169dac1ad027e3/reflex-dom-core/reflex-dom-core.cabal) to use different source files and packages (WARN: link to specific commit, can be outdated)
 
 ## misc
